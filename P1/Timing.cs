@@ -20,15 +20,15 @@ namespace P1
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            for (int i = 0; i < Threads.Length; i++)
-                Threads[i] = Process.GetCurrentProcess().Threads[i].UserProcessorTime;
+            for (int p = 0; p < Threads.Length; p++)
+                Threads[p] = Process.GetCurrentProcess().Threads[p].UserProcessorTime;
         }
         public void StopTime()
         {
             TimeSpan tmp;
-            for (int i = 0; i < Threads.Length; i++)
+            for (int p = 0; p < Threads.Length; p++)
             {
-                tmp = Process.GetCurrentProcess().Threads[i].UserProcessorTime.Subtract(Threads[i]);
+                tmp = Process.GetCurrentProcess().Threads[p].UserProcessorTime.Subtract(Threads[p]);
                 if (tmp > TimeSpan.Zero)
                     Duration = tmp;
             }

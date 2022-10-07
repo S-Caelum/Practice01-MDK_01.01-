@@ -61,18 +61,6 @@ namespace P1
                 a[left] = tmp;         // Размещение элемента в нужном месте
             }
         }
-        public void BubbleSort(int[] a)
-        {
-            int N = a.Length;
-            for (int i = 1; i < N; i++)
-                for (int j = N - 1; j <= i; j--)
-                    if (a[j - 1] > a[i])
-                    {
-                        int t = a[j - 1];
-                        a[j - 1] = a[i];
-                        a[j] = t;
-                    }
-        }
         public static void SortShaker(int[] a)
         {
             int left = 1, right = a.Length - 1, last = right;
