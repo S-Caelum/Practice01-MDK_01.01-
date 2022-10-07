@@ -61,7 +61,7 @@ namespace P1
                 a[left] = tmp;         // Размещение элемента в нужном месте
             }
         }
-        public void BubleSort(int[] a)
+        public void BubbleSort(int[] a)
         {
             int N = a.Length;
             for (int i = 1; i < N; i++)

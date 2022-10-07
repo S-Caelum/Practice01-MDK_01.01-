@@ -13,21 +13,67 @@ namespace P1
     {
         public static void Main()
         {
-            int N = 1000000000;
+            Console.WriteLine("Generating array...");
+            int N = 1000000; // Количество элементов специально для перегрева устройства.
             int[] a = new int[N];
-            Random rand = new Random();
+            Random r = new Random();
             for (int i = 0; i < N; i++)
-                a[i] = rand.Next() % 500;
+                a[i] = r.Next() % 500;
+            Console.WriteLine("Array generation complete.");
             Sorts sorts = new Sorts();
             Timing timing = new Timing();
             Stopwatch stopwatch = new Stopwatch();
-            timing.StartTime();
-            stopwatch.Start();
-            sorts.SortInsertion(a);
-            stopwatch.Stop();
-            timing.StopTime();
-            Console.WriteLine("Stopwatch: " + stopwatch.Elapsed.ToString());
-            Console.WriteLine("Timer: " + timing.Result().ToString());
+
+            Console.WriteLine("");
+            Console.WriteLine("Enter value from 1 to 3 and press <Enter>");
+            Console.WriteLine("1. Selection sorting");
+            Console.WriteLine("2. Exchange sorting");
+            Console.WriteLine("3. Insertion sorting");
+            string key = Console.ReadLine();
+
+            if (key == "1")
+            {
+                stopwatch.Start();
+                timing.StartTime();
+
+                sorts.SortSelection(a);
+
+                stopwatch.Stop();
+                timing.StopTime();
+
+                Console.WriteLine("Stopwatch result in selection sorting is: " + stopwatch.Elapsed.ToString());
+                Console.WriteLine("Timing in selection sorting is: " + timing.Result().ToString());
+            }
+            else if (key == "2")
+            {
+                stopwatch.Start();
+                timing.StartTime();
+
+                sorts.BubbleSort(a);
+
+                stopwatch.Stop();
+                timing.StopTime();
+
+                Console.WriteLine("Stopwatch result in bubble sorting is: " + stopwatch.Elapsed.ToString());
+                Console.WriteLine("Timing result in bubble sorting is: " + timing.Result().ToString());
+            }
+            else if (key == "3")
+            {
+                stopwatch.Start();
+                timing.StartTime();
+
+                sorts.SortInsertion(a);
+
+                stopwatch.Stop();
+                timing.StopTime();
+
+                Console.WriteLine("Stopwatch result in insertion sorting is: " + stopwatch.Elapsed.ToString());
+                Console.WriteLine("Timing result in insertion sorting is: " + timing.Result().ToString());
+            }
+            else
+            {
+                Console.WriteLine("Operation complete!");
+            }
         }
     }
 }
